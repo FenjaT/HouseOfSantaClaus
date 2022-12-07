@@ -17,6 +17,11 @@ public class HouseOfSantaClaus {
         addSolution(n);
       }
     }
+    // flip all numbers because the house can also be mirrored
+    int numberOfSolutions = solutions.size();
+    for (int i = 0; i<numberOfSolutions; i++){
+      solutions.add(reverseNumber(solutions.get(i)));
+    }
   }
 
   boolean isSolution(int number) {
@@ -90,6 +95,18 @@ public class HouseOfSantaClaus {
     }
     return true;
   }
+
+  public static int reverseNumber(int number){
+    int reverse = 0;
+    while(number != 0)
+    {
+      int remainder = number % 10;
+      reverse = reverse * 10 + remainder;
+      number = number/10;
+    }
+    return reverse;
+  }
+
   void printSolution(){
     System.out.print("Anzahl an Möglichkeiten: ");
     System.out.println(solutions.size());
